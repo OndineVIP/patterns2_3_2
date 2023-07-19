@@ -1,4 +1,5 @@
 package ru.netology.patterns.test;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -19,14 +20,15 @@ public class AuthTest {
     void setup() {
         open("http://localhost:9999");
     }
+
     @Test
     @DisplayName("Should successfully login with active registered user")
     void shouldSuccessfulLoginIfRegisteredActiveUser() {
         var registeredUser = getRegisteredUser("active");
-        $("[data-test-id=login] input").setValue(registeredUser.getLogin());
-        $("[data-test-id=password] input").setValue(registeredUser.getPassword());
+        $("[data-test-id='login'] input").setValue(registeredUser.getLogin());
+        $("[data-test-id='password'] input").setValue(registeredUser.getPassword());
         $("button.button").click();
-        $("h2").shouldHave(exactText("  Личный кабинет")).shouldBe(visible);
+        $("h2").shouldHave(exactText("Личный кабинет")).shouldBe(visible);
     }
 
     @Test
@@ -40,6 +42,7 @@ public class AuthTest {
                 .shouldBe(visible, Duration.ofSeconds(10));
 
     }
+
     @Test
     @DisplayName("Should get error message if login with blocked registered user")
     void shouldGetErrorIfBlockedUser() {
@@ -50,6 +53,7 @@ public class AuthTest {
         $("[data-test-id=error-notification] .notification__content").shouldHave(exactText("Ошибка! Пользователь заблокирован"))
                 .shouldBe(visible, Duration.ofSeconds(10));
     }
+
     @Test
     @DisplayName("Should get error message if login with wrong login")
     void shouldGetErrorIfWrongLogin() {
@@ -61,6 +65,7 @@ public class AuthTest {
         $("[data-test-id=error-notification] .notification__content").shouldHave(exactText("Ошибка! Неверно указан логин или пароль"))
                 .shouldBe(visible, Duration.ofSeconds(10));
     }
+
     @Test
     @DisplayName("Should get error message if login with wrong password")
     void shouldGetErrorIfWrongPassword() {

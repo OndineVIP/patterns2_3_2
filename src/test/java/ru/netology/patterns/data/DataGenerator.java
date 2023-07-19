@@ -28,21 +28,21 @@ public class DataGenerator {
 
     private static void sendRequest(RegistrationDto user) {
         given() // "дано"
-                .spec(requestSpec) // спецификаци
+                .spec(requestSpec)
                 .body(user)
                 .when()
                 .post("/api/system/users") // путь
-                .then() //не проходит
+                .then() //не проходит по
                 .statusCode(200); // если 200 OK
     }
 
 
     public static String getRandomLogin() {
-               return faker.name().username();
+        return faker.name().username();
     }
 
     public static String getRandomPassword() {
-                return faker.internet().password();
+        return faker.internet().password();
     }
 
     public static class Registration {
@@ -50,7 +50,7 @@ public class DataGenerator {
         }
 
         public static RegistrationDto getUser(String status) {
-                       return new RegistrationDto(getRandomLogin(), getRandomPassword(), status);
+            return new RegistrationDto(getRandomLogin(), getRandomPassword(), status);
         }
 
         public static RegistrationDto getRegisteredUser(String status) {

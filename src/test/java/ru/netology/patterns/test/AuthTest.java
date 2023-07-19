@@ -25,8 +25,8 @@ public class AuthTest {
     @DisplayName("Should successfully login with active registered user")
     void shouldSuccessfulLoginIfRegisteredActiveUser() {
         var registeredUser = getRegisteredUser("active");
-        $("[data-test-id='login'] input").setValue(registeredUser.getLogin());
-        $("[data-test-id='password'] input").setValue(registeredUser.getPassword());
+        $("[data-test-id=login] input").setValue(registeredUser.getLogin());
+        $("[data-test-id=password] input").setValue(registeredUser.getPassword());
         $("button.button").click();
         $("h2").shouldHave(exactText("Личный кабинет")).shouldBe(visible);
     }

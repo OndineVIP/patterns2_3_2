@@ -32,8 +32,8 @@ public class DataGenerator {
                 .body(user)
                 .when()
                 .post("/api/system/users") // путь
-                .then() //не проходит по
-                .statusCode(200); // если 200 OK
+                .then()
+                .statusCode(200); // если 200 OK , но выдает 404
     }
 
 

@@ -27,13 +27,13 @@ public class DataGenerator {
     }
 
     private static void sendRequest(RegistrationDto user) {
-        given() // "дано"
+        given() //
                 .spec(requestSpec)
                 .body(user)
                 .when()
                 .post("/api/system/users") // путь
                 .then()
-                .statusCode(200); // если 200 OK , но выдает 404
+                .statusCode(200);
     }
 
 
@@ -52,8 +52,9 @@ public class DataGenerator {
         }
 
         public static RegistrationDto getUser(String status) {
-            var user = new RegistrationDto(getRandomLogin(), getRandomPassword(), status);
-            return user;
+            var login = getRandomLogin();
+            var password = getRandomPassword();
+            return new RegistrationDto(login, password, status);
         }
 
         public static RegistrationDto getRegisteredUser(String status) {
